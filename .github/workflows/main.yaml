@@ -1,0 +1,36 @@
+name: builde readme.md
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 12 * * 1' # every week on Monday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+      - name: cache
+        id: cache-node-modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies (if needed)
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm install
+      - name: Generate README file
+        run: node index.js
+        env:
+          # OPEN_WEATHER_MAP_KEY: ${{secrets.OPEN_WEATHER_MAP_KEY}}
+      - name: Push new README.md
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
