@@ -1,14 +1,9 @@
-name: builde readme.md
-
-on:
-  push:
-    branches:
-      - master
-  schedule:
-    - cron: '0 12 * * 1' # every week on Monday
-
+name: Rebuild Readme
+on: [push]
+permissions:
+  contents: write
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -28,7 +23,7 @@ jobs:
         run: npm install
       - name: Generate README file
         run: node index.js
-        env:
+        # env:
           # OPEN_WEATHER_MAP_KEY: ${{secrets.OPEN_WEATHER_MAP_KEY}}
       - name: Push new README.md
         uses: mikeal/publish-to-github-action@master
