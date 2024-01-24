@@ -29,8 +29,11 @@ jobs:
         # env:
           # OPEN_WEATHER_MAP_KEY: ${{secrets.OPEN_WEATHER_MAP_KEY}}
       - name: Push new README.md
-        uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          BRANCH_NAME: master
+        run: |
+          git add readme.md
+          git config user.name autocommit
+          git config user.email autocommit@lxch.io
+          git commit -m 'build from dev'
+          git push HEAD:master HEAD:master --force
+        
           
