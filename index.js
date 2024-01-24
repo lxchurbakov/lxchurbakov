@@ -8,9 +8,11 @@ const OUTPUT_FILENAME = './readme.md';
 const promisify = (predicate) => (...args) => new Promise((resolve, reject) => predicate(...args, (err, data) => err ? reject(err) : resolve(data)));
 
 const readFile = promisify(fs.readFile.bind(fs));
+const writeFile = promisify(fs.writeFile.bind(fs));
 
 ;(async () => {
     const templatePath = path.resolve(process.cwd(), TEMPLATE_FILENAME);
+    const outputPath = path.resolve(process.cwd(), OUTPUT_FILENAME);
 
     const template = await readFile(templatePath).then(($) => $.toString());
     
@@ -20,21 +22,7 @@ const readFile = promisify(fs.readFile.bind(fs));
         experience_years: 'более чем 8',
     }, {});
 
-    console.log(content);
-})();
-
-// const template = fs
-
-// console.log(
-//     ejs.render('<%= name %>', { name: 'Alex' }, {})
-// );
-
-// fs.writeFileSync('./readme.md', `
-// # Hey everyone, my name is Alexander
-
-// And I am a Fullstack Javascript Engineer with more than 8 years of experience and wannbe indiehacker.
-// `, (err) => {
-//     if (err) {
-//         process.exit(1);
-//     }
-// });
+    await writeFile(outputPath, content);
+})().catch((err) => {
+    // TODO notify about error and exit -1
+});
