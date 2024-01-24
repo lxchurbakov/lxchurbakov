@@ -12,6 +12,8 @@ const readFile = promisify(fs.readFile.bind(fs));
 const writeFile = promisify(fs.writeFile.bind(fs));
 const makeDir = promisify(fs.mkdir.bind(fs));
 
+const beautify = (name) => name.at(0).toUpperCase() + name.substr(1);
+
 //
 // Lichess related stuff
 //
@@ -20,8 +22,8 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'bullet']) => {
     const response = await axios.get('https://lichess.org/api/user/lxchurbakov').then(({ data }) => data);
 
     return Object.entries(response.perfs)
-    .filter(([key]) => keys.includes(key))
-    .map(([key, value]) => ({ name: key, value: value.rating }));
+        .filter(([key]) => keys.includes(key))
+        .map(([key, value]) => ({ name: beautify(key), value: value.rating }));
 };
 
 ;(async () => {

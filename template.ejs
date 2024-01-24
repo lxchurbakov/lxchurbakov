@@ -8,7 +8,7 @@
 
 Мой рейтинг на lichess: <% 
     lichessRating.forEach((rating, index) => {
-        %>**<%= rating.name %>**: <%= rating.value %><%= index < lichessRating.length - 1 ? ', ' : ''%><%
+        %><%= rating.name %>: **<%= rating.value %>**<%= index < lichessRating.length - 1 ? ', ' : ''%><%
     })
 %><%#
 
