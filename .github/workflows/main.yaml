@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - dev
+  schedule:
+    - cron: '0 12 * * *' # every day
 permissions:
   contents: write
 jobs:
