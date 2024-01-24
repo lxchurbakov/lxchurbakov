@@ -5,6 +5,8 @@ const axios = require('axios');
 
 const TEMPLATE_FILENAME = './template.ejs';
 const OUTPUT_FILENAME = './dist/readme.md';
+const LICHESS_PROFILE_URL = 'https://lichess.org/api/user/lxchurbakov';
+const LICHESS_CHALLENGE_LINK = 'https://lichess.org/?user=lxchurbakov#friend';
 
 const promisify = (predicate) => (...args) => new Promise((resolve, reject) => predicate(...args, (err, data) => err ? reject(err) : resolve(data)));
 
@@ -12,14 +14,14 @@ const readFile = promisify(fs.readFile.bind(fs));
 const writeFile = promisify(fs.writeFile.bind(fs));
 const makeDir = promisify(fs.mkdir.bind(fs));
 
-const beautify = (name) => name.at(0).toUpperCase() + name.substr(1);
+const beautify = (name) => name.charAt(0).toUpperCase() + name.substr(1);
 
 //
 // Lichess related stuff
 //
 
-const fetchLichessRating = async (keys = ['blitz', 'rapid', 'bullet']) => {
-    const response = await axios.get('https://lichess.org/api/user/lxchurbakov').then(({ data }) => data);
+const fetchLichessRating = async (keys = ['blitz', 'rapid', 'bullet', 'puzzle']) => {
+    const response = await axios.get(LICHESS_PROFILE_URL).then(({ data }) => data);
 
     return Object.entries(response.perfs)
         .filter(([key]) => keys.includes(key))
@@ -38,7 +40,7 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'bullet']) => {
         name: 'Александр Чурбаков',
         role: 'Fullstack JS/TS developer',
         experience_years: 'более чем 8',
-        lichessRating,
+        lichessRating, lichessLink: LICHESS_CHALLENGE_LINK,
     }, {});
 
     const dirname = path.parse(outputPath).dir;

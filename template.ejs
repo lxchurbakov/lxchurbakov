@@ -10,7 +10,7 @@
     lichessRating.forEach((rating, index) => {
         %><%= rating.name %>: **<%= rating.value %>**<%= index < lichessRating.length - 1 ? ', ' : ''%><%
     })
-%><%#
+%>. [[Сыграть со мной](<%= lichessLink %>)]<%#
 
 + секция про навыки
 
