@@ -20,7 +20,7 @@ const beautify = (name) => name.charAt(0).toUpperCase() + name.substr(1);
 // Lichess related stuff
 //
 
-const fetchLichessRating = async (keys = ['blitz', 'rapid', 'bullet', 'puzzle']) => {
+const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
     const response = await axios.get(LICHESS_PROFILE_URL).then(({ data }) => data);
 
     return Object.entries(response.perfs)
