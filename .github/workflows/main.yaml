@@ -28,12 +28,20 @@ jobs:
         run: node index.js
         # env:
           # OPEN_WEATHER_MAP_KEY: ${{secrets.OPEN_WEATHER_MAP_KEY}}
-      - name: Push new README.md
-        run: |
-          git add readme.md
-          git config user.name autocommit
-          git config user.email autocommit@lxch.io
-          git commit -m 'build from dev'
-          git push HEAD:master HEAD:master --force
+      - name: Push new readme.md
+        uses: s0/git-publish-subdir-action@develop
+          env:
+            REPO: self
+            BRANCH: master # The branch name where you want to push the assets
+            FOLDER: . # The directory where your assets are generated
+            GITHUB_TOKEN: ${{ secrets.TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+            MESSAGE: "Automatic Readme Update" # The commit message
+      # - name: Push new README.md
+      #   run: |
+      #     git add readme.md
+      #     git config user.name autocommit
+      #     git config user.email autocommit@lxch.io
+      #     git commit -m 'build from dev'
+      #     git push HEAD:master HEAD:master --force
         
           
