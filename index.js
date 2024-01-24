@@ -3,12 +3,13 @@ const ejs = require('ejs');
 const path = require('path');
 
 const TEMPLATE_FILENAME = './template.ejs';
-const OUTPUT_FILENAME = './readme.md';
+const OUTPUT_FILENAME = './dist/readme.md';
 
 const promisify = (predicate) => (...args) => new Promise((resolve, reject) => predicate(...args, (err, data) => err ? reject(err) : resolve(data)));
 
 const readFile = promisify(fs.readFile.bind(fs));
 const writeFile = promisify(fs.writeFile.bind(fs));
+const makeDir = promisify(fs.mkdir.bind(fs));
 
 ;(async () => {
     const templatePath = path.resolve(process.cwd(), TEMPLATE_FILENAME);
@@ -22,6 +23,9 @@ const writeFile = promisify(fs.writeFile.bind(fs));
         experience_years: 'более чем 8',
     }, {});
 
+    const dirname = path.parse(outputPath).dir;
+
+    await makeDir(dirname).catch(() => null);
     await writeFile(outputPath, content);
 })().catch((err) => {
     // TODO notify about error and exit -1
