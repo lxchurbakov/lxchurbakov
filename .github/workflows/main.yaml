@@ -1,5 +1,8 @@
 name: Rebuild Readme
-on: [push]
+on: 
+  push:
+    branches:
+      - dev
 permissions:
   contents: write
 jobs:
@@ -29,3 +32,5 @@ jobs:
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          BRANCH_NAME: master
+          
