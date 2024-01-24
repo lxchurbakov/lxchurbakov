@@ -49,5 +49,5 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'bullet', 'puzzle'])
     await writeFile(outputPath, content);
 })().catch((err) => {
     console.log(err);
-    // TODO notify about error and exit -1
+    process.exit(-1);
 });
