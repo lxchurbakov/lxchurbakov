@@ -47,6 +47,8 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
 
     await makeDir(dirname).catch(() => null);
     await writeFile(outputPath, content);
+
+    await writeFile(dirname + '/diem.js', 'console.log("it works")')
 })().catch((err) => {
     console.log(err);
     process.exit(-1);
