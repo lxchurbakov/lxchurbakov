@@ -27,7 +27,7 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
       - name: Generate README file
-        run: node index.js
+        run: npm start
         # env:
           # OPEN_WEATHER_MAP_KEY: ${{secrets.OPEN_WEATHER_MAP_KEY}}
       - name: Push new readme.md

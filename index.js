@@ -41,6 +41,8 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
         role: 'Fullstack JS/TS developer',
         experience_years: 'более чем 8',
         lichessRating, lichessLink: LICHESS_CHALLENGE_LINK,
+        tgUserName: 'lxchurbakov',
+        calendlyLink: 'https://calendly.com/lxch/job-interview',
     }, {});
 
     const dirname = path.parse(outputPath).dir;
@@ -48,7 +50,7 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
     await makeDir(dirname).catch(() => null);
     await writeFile(outputPath, content);
 
-    await writeFile(dirname + '/diem.js', 'console.log("it works")')
+    // await writeFile(dirname + '/peeve.js', 'console.log("it works")')
 })().catch((err) => {
     console.log(err);
     process.exit(-1);
