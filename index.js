@@ -43,6 +43,7 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
         lichessRating, lichessLink: LICHESS_CHALLENGE_LINK,
         tgUserName: 'lxchurbakov',
         calendlyLink: 'https://calendly.com/lxch/job-interview',
+        cvLink: 'https://beryl-plume-b58.notion.site/c5df7d9f758c47229b046d34d1573a26',
     }, {});
 
     const dirname = path.parse(outputPath).dir;
