@@ -4,7 +4,7 @@
 
 ## Работа
 
-Сейчас я нахожусь в поиске работы, пишите мне в телеграм [@lxchurbakov](https://t.me/lxchurbakov) или забукайте интервью [тут](https://calendly.com/lxch/job-interview)
+Сейчас я нахожусь в поиске работы, пишите мне в телеграм [@lxchurbakov](https://t.me/lxchurbakov) или забукайте интервью [тут](https://calendly.com/lxch/job-interview).[Вот здесь](https://beryl-plume-b58.notion.site/c5df7d9f758c47229b046d34d1573a26) можно посмотреть моё CV.
 
 ## Мои интересы
 
