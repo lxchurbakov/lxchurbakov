@@ -14,4 +14,4 @@
 
 ### Шахматы
 
-Мой рейтинг на lichess: Blitz: **1030**, Puzzle: **1470**, Rapid: **1195**. [Сыграть со мной](https://lichess.org/?user=lxchurbakov#friend)
+Мой рейтинг на lichess: Blitz: **1030**, Puzzle: **1470**, Rapid: **1201**. [Сыграть со мной](https://lichess.org/?user=lxchurbakov#friend)
