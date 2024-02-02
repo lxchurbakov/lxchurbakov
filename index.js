@@ -13,6 +13,8 @@ const promisify = (predicate) => (...args) => new Promise((resolve, reject) => p
 const readFile = promisify(fs.readFile.bind(fs));
 const writeFile = promisify(fs.writeFile.bind(fs));
 const makeDir = promisify(fs.mkdir.bind(fs));
+const readDir = promisify(fs.readdir.bind(fs));
+const copyFile = promisify(fs.copyFile.bind(fs));
 
 const beautify = (name) => name.charAt(0).toUpperCase() + name.substr(1);
 
@@ -51,7 +53,15 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
     await makeDir(dirname).catch(() => null);
     await writeFile(outputPath, content);
 
-    // await writeFile(dirname + '/peeve.js', 'console.log("it works")')
+    // Also I want to build a peeve script
+    // For users to check my page out
+
+    const peevedir = path.resolve(process.cwd(), './peeve');
+
+    await Promise.all((await readDir(peevedir)).map((async (filename) => {
+        // Copy file
+        await copyFile(peevedir + '/' + filename, dirname + '/' + filename);
+    })));
 })().catch((err) => {
     console.log(err);
     process.exit(-1);
