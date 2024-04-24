@@ -1,6 +1,6 @@
 # Sup everyone
 
-My name is Александр Чурбаков, I am Fullstack JS/TS developer with более чем 8 years of experience.
+My name is Alexander Churbakov, I am Fullstack JS/TS developer with more than 8 years of experience.
 
 ## Interests
 
