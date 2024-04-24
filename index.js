@@ -7,6 +7,7 @@ const TEMPLATE_FILENAME = './template.ejs';
 const OUTPUT_FILENAME = './dist/readme.md';
 const LICHESS_PROFILE_URL = 'https://lichess.org/api/user/lxchurbakov';
 const LICHESS_CHALLENGE_LINK = 'https://lichess.org/?user=lxchurbakov#friend';
+const LEETCODE_STATS_LINK = 'https://leetcodestats.cyclic.app/lxch';
 
 const promisify = (predicate) => (...args) => new Promise((resolve, reject) => predicate(...args, (err, data) => err ? reject(err) : resolve(data)));
 
@@ -30,6 +31,11 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
         .map(([key, value]) => ({ name: beautify(key), value: value.rating }));
 };
 
+const fetchLeetcodeCount = async () => {
+    return axios.get(LEETCODE_STATS_LINK).then(({ data }) => data)
+        .then(({ totalSolved }) => totalSolved);
+};
+
 ;(async () => {
     const templatePath = path.resolve(process.cwd(), TEMPLATE_FILENAME);
     const outputPath = path.resolve(process.cwd(), OUTPUT_FILENAME);
@@ -37,6 +43,7 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
     const template = await readFile(templatePath).then(($) => $.toString());
 
     const lichessRating = await fetchLichessRating();
+    const leetcodeCount = await fetchLeetcodeCount();
     
     const content = ejs.render(template, {
         name: 'Александр Чурбаков',
@@ -46,6 +53,7 @@ const fetchLichessRating = async (keys = ['blitz', 'rapid', 'puzzle']) => {
         tgUserName: 'lxchurbakov',
         calendlyLink: 'https://calendly.com/lxch/job-interview',
         cvLink: 'https://beryl-plume-b58.notion.site/c5df7d9f758c47229b046d34d1573a26',
+        leetcodeCount,
     }, {});
 
     const dirname = path.parse(outputPath).dir;

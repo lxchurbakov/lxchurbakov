@@ -1,8 +1,8 @@
-# Всем привет!
+# Sup everyone
 
-Меня зовут <%= name %>, я <%= role %> с <%= experience_years %> годами опыта.
+My name is <%= name %>, I am <%= role %> with <%= experience_years %> years of experience.
 
-## Мои интересы
+## Interests
 
 <%#
 
@@ -10,13 +10,17 @@
 
 Я автор канала [Индихакершная](https://t.me/lxchio), где каждую неделю мы проводим джемы, создавая приложения (и не только).
 #%>
-### Шахматы
+### Leeetcode
 
-Мой рейтинг на lichess: <% 
+I love to solve leetcode tasks. I've already solved **<%= leetcodeCount %>** of them.
+
+### Chess
+
+My rating on lichess: <% 
     lichessRating.forEach((rating, index) => {
         %><%= rating.name %>: **<%= rating.value %>**<%= index < lichessRating.length - 1 ? ', ' : ''%><%
     })
-%>. [Сыграть со мной](<%= lichessLink %>)<%#
+%>. [Play with me](<%= lichessLink %>)<%#
 
 + секция про навыки
 
