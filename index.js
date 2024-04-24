@@ -46,9 +46,9 @@ const fetchLeetcodeCount = async () => {
     const leetcodeCount = await fetchLeetcodeCount();
     
     const content = ejs.render(template, {
-        name: 'Александр Чурбаков',
+        name: 'Alexander Churbakov',
         role: 'Fullstack JS/TS developer',
-        experience_years: 'более чем 8',
+        experience_years: 'more than 8',
         lichessRating, lichessLink: LICHESS_CHALLENGE_LINK,
         tgUserName: 'lxchurbakov',
         calendlyLink: 'https://calendly.com/lxch/job-interview',
