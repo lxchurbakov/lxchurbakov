@@ -1,10 +1,14 @@
-# Всем привет!
+# Sup everyone
 
-Меня зовут Александр Чурбаков, я Fullstack JS/TS developer с более чем 8 годами опыта.
+My name is Александр Чурбаков, I am Fullstack JS/TS developer with более чем 8 years of experience.
 
-## Мои интересы
+## Interests
 
 
-### Шахматы
+### Leeetcode
 
-Мой рейтинг на lichess: Blitz: **1008**, Puzzle: **1470**, Rapid: **1225**. [Сыграть со мной](https://lichess.org/?user=lxchurbakov#friend)
+I love to solve leetcode tasks. I've already solved **103** of them.
+
+### Chess
+
+My rating on lichess: Blitz: **1171**, Rapid: **1220**, Puzzle: **1612**. [Play with me](https://lichess.org/?user=lxchurbakov#friend)
