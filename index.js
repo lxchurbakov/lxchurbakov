@@ -53,7 +53,7 @@ const fetchLeetcodeCount = async () => {
         tgUserName: 'lxchurbakov',
         calendlyLink: 'https://calendly.com/lxch/job-interview',
         cvLink: 'https://beryl-plume-b58.notion.site/c5df7d9f758c47229b046d34d1573a26',
-        leetcodeCount,
+        leetcodeCount, leetcodeLink: 'https://leetcode.com/lxch/',
     }, {});
 
     const dirname = path.parse(outputPath).dir;
