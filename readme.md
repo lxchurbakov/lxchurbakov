@@ -7,7 +7,7 @@ My name is Alexander Churbakov, I am Fullstack JS/TS developer with more than 8 
 
 ### Leeetcode
 
-I love to solve leetcode tasks. I've already solved **103** of them.
+I love to solve leetcode tasks. I've already solved **103** of them. [Check out](https://leetcode.com/lxch/)
 
 ### Chess
 
